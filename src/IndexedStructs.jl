@@ -25,21 +25,12 @@ function _indexify(expr)
     T = _find_struct_name(expr)
 
     return quote
-        eval($expr)
+        $expr
+        
         function Base.getindex(t::S, i::I) where {S <: $T, I}
             getfield(t, fieldnames($T)[i])
         end
     end
 end
-
-#=
-push!(qs, quote
-    function Base.getindex(t::S, i::I) where {S <: $T, I}
-        getfield(t, fieldnames($T)[i])
-    end
-end)
-
-return qs
-=#
 
 end # module IndexedStructs
