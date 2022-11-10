@@ -9,7 +9,11 @@ end
 
 function _find_struct_name(expr)
     if expr.head == :struct
-        return expr.args[2]
+        if expr.args[2] isa Symbol
+            return expr.args[2]
+        elseif expr.args[2] isa Expr
+            return expr.args[2].args[1]
+        end
     elseif expr.head == :macrocall
         name = _find_struct_name(expr.args[3])
         if name !== nothing
@@ -26,7 +30,7 @@ function _indexify(expr)
 
     return quote
         $expr
-        
+
         function Base.getindex(t::S, i::I) where {S <: $T, I}
             getfield(t, fieldnames($T)[i])
         end
