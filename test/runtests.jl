@@ -40,3 +40,15 @@ end
     @test t3.c == t3[3]
     
 end
+
+@testset "Simple Math" begin
+    @vectorlike struct MyTestStruct4
+        a::Float64
+        b::Int64
+    end
+
+    t4 = MyTestStruct4(1.0, 2)
+    t5 = 3 * t4
+    @test t5[1] == 3*t4[1]
+    @test t5[2] == 3*t4[2]
+end
