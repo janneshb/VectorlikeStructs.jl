@@ -1,4 +1,4 @@
 name = "IndexedStructs"
 uuid = "212a746f-93a9-4150-8ca9-4ffe417b6923"
 authors = ["Jannes Huehnerbein <j.huehnerbein@icloud.com>"]
-version = "0.1.0"
+version = "0.3.1"
