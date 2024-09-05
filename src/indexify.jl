@@ -1,12 +1,3 @@
-module IndexedStructs
-
-export @indexed
-
-macro indexed(T)
-    expr = _indexify(T)
-    return esc(expr)
-end
-
 function _find_struct_name(expr)
     if expr.head == :struct
         if expr.args[2] isa Symbol
@@ -23,7 +14,7 @@ function _find_struct_name(expr)
         if name !== nothing
             return name
         else
-            error("Could not find a struct definition in what was passed to @indexed.")
+            error("Could not find a struct definition in what was passed to @vectorlike.")
         end
     end
     return nothing
@@ -40,5 +31,3 @@ function _indexify(expr)
         end
     end
 end
-
-end # module IndexedStructs

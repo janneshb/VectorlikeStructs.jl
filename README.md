@@ -1,1 +1,1 @@
-# IndexedStructs.jl
+# VectorlikeStructs.jl

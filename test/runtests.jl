@@ -1,9 +1,9 @@
 using Test
-using IndexedStructs
+using VectorlikeStructs
 
 @testset "Simple Use" begin
     # with types
-    @indexed struct MyTestStruct1
+    @vectorlike struct MyTestStruct1
         a::Float64
         b::Int64
         c::Bool
@@ -15,7 +15,7 @@ using IndexedStructs
     @test t1.c == t1[3]
 
     # without types
-    @indexed struct MyTestStruct2
+    @vectorlike struct MyTestStruct2
         a
         b
         c
@@ -28,7 +28,7 @@ using IndexedStructs
 end
 
 @testset "Use with @kwdef" begin
-    @indexed Base.@kwdef struct MyTestStruct3
+    @vectorlike Base.@kwdef struct MyTestStruct3
         a::Float64 = 1.5
         b::Int64 = 42
         c::Bool = true
