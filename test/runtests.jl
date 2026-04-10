@@ -1,5 +1,6 @@
 using Test
 using VectorlikeStructs
+using ConcreteStructs
 
 @testset "Simple Use" begin
     # with types
@@ -51,4 +52,16 @@ end
     t5 = 3 * t4
     @test t5[1] == 3*t4[1]
     @test t5[2] == 3*t4[2]
+end
+
+@testset "Use with @concrete" begin
+    @vectorlike @concrete struct MyTestStruct5
+        a
+        v
+    end
+
+    t5 = MyTestStruct5(5.0, [1.0, 2.0])
+    @test t5.a == t5[1]
+    @test t5.v[1] == t5[2][1]
+    @test t5.v[2] == t5[2][2]
 end
